@@ -1,5 +1,8 @@
 \# Restful Booker API Test Automation with Bruno
 
+# Restful Booker API Test Automation with Bruno
+
+[![Bruno API Tests](https://github.com/NaomiMiyake/restful-booker-bruno/actions/workflows/bruno-api-tests.yml/badge.svg)](https://github.com/NaomiMiyake/restful-booker-bruno/actions/workflows/bruno-api-tests.yml)
 
 
 > A portfolio project demonstrating API test automation using Bruno.
