@@ -1,0 +1,7 @@
+info:
+  name: S001-Booking-Create-Get-Delete
+  type: folder
+  seq: 8
+
+request:
+  auth: inherit

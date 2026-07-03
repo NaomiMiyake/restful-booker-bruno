@@ -1,0 +1,28 @@
+info:
+  name: API-001 Get booking list
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseurl}}/booking/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("status is 200", function () {
+          expect(res.status).to.equal(200);
+        });
+
+        test("response is array", function () {
+          const body = res.getBody();
+          expect(body).to.be.an("array");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

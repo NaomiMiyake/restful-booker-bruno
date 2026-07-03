@@ -1,0 +1,7 @@
+info:
+  name: S010-Booking-Delete-Nonexistent
+  type: folder
+  seq: 25
+
+request:
+  auth: inherit

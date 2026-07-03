@@ -1,0 +1,7 @@
+info:
+  name: S005-Auth-Invalid-Credentials
+  type: folder
+  seq: 21
+
+request:
+  auth: inherit

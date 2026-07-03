@@ -1,0 +1,7 @@
+info:
+  name: S009-Booking-Update-Nonexistent
+  type: folder
+  seq: 23
+
+request:
+  auth: inherit

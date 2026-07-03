@@ -1,0 +1,58 @@
+info:
+  name: API-002 Create booking
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseurl}}/booking"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "firstname": "Test",
+        "lastname": "User",
+        "totalprice": 10000,
+        "depositpaid": true,
+        "bookingdates": {
+          "checkin": "2026-07-03",
+          "checkout": "2026-07-04"
+        },
+        "additionalneeds": "Breakfast"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        const body = res.getBody();
+
+        bru.setVar("bookingId", body.bookingid);
+
+        test("status is 200", function () {
+            expect(res.status).to.equal(200);
+        });
+
+        test("response has bookingid", function () {
+          expect(body).to.have.property("bookingid");
+        });
+
+        test("response has booking", function () {
+          expect(body).to.have.property("booking");
+        });
+
+        test("created firstname is correct", function () {
+          expect(body.booking.firstname).to.equal("Test");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

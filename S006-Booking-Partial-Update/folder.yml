@@ -1,0 +1,7 @@
+info:
+  name: S006-Booking-Partial-Update
+  type: folder
+  seq: 16
+
+request:
+  auth: inherit

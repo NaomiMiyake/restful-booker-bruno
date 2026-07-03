@@ -1,0 +1,26 @@
+info:
+  name: API-006 Verify booking deleted
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{baseurl}}/booking/{{bookingId}}"
+  headers:
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("status is 404", function () {
+            expect(res.status).to.equal(404);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

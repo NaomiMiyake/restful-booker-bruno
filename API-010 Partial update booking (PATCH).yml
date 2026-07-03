@@ -1,0 +1,46 @@
+info:
+  name: API-010 Partial update booking (PATCH)
+  type: http
+  seq: 11
+
+http:
+  method: PATCH
+  url: "{{baseurl}}/booking/{{bookingId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Cookie
+      value: token={{token}};
+  body:
+    type: json
+    data: |-
+      {
+        "firstname": "Updated"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        const body = res.getBody();
+
+        test("status is 200", function () {
+            expect(res.status).to.equal(200);
+        });
+
+        test("firstname updated", function () {
+            expect(body.firstname).to.equal("Updated");
+        });
+
+        test("lastname updated", function () {
+            expect(body.lastname).to.equal("Booking");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

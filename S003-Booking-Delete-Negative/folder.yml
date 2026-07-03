@@ -1,0 +1,7 @@
+info:
+  name: S003-Booking-Delete-Negative
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit

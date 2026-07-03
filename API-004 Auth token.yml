@@ -1,0 +1,43 @@
+info:
+  name: API-004 Auth token
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{baseurl}}/auth"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "username": "{{username}}",
+        "password": "{{password}}"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        const body = res.getBody();
+
+        bru.setVar("token", body.token);
+
+        test("status is 200", function () {
+          expect(res.status).to.equal(200);
+        });
+
+        test("response has token", function () {
+          expect(body).to.have.property("token");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

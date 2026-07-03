@@ -1,0 +1,12 @@
+name: dev
+variables:
+  - name: baseurl
+    value: restful-booker.herokuapp.com
+  - name: username
+    value: admin
+  - name: password
+    value: password123
+  - name: invalidUsername
+    value: invalid_user
+  - name: invalidPassword
+    value: invalid_password

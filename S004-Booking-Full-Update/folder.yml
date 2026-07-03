@@ -1,0 +1,7 @@
+info:
+  name: S004-Booking-Full-Update
+  type: folder
+  seq: 13
+
+request:
+  auth: inherit
