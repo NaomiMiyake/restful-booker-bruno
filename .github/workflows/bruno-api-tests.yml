@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 24
 
@@ -22,4 +20,14 @@ jobs:
         run: npm install -g @usebruno/cli
 
       - name: Run Bruno API tests
-        run: bru run . --env dev
+        run: |
+          bru run "S001-Booking-Create-Get-Delete" --env dev
+          bru run "S002-Booking-Get-Negative" --env dev
+          bru run "S003-Booking-Delete-Negative" --env dev
+          bru run "S004-Booking-Full-Update" --env dev
+          bru run "S005-Auth-Invalid-Credentials" --env dev
+          bru run "S006-Booking-Partial-Update" --env dev
+          bru run "S007-Booking-Partial-Update-Negative" --env dev
+          bru run "S008-Booking-Full-Update-Negative" --env dev
+          bru run "S009-Booking-Update-Nonexistent" --env dev
+          bru run "S010-Booking-Delete-Nonexistent" --env dev
